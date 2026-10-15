@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" width="100%" height="100%">
+  
+  
+  <!-- Centered Symbol: x=300..900, y=140..740 (scale 0.6) -->
+  <g transform="translate(300, 120) scale(0.6)" >
+    
+      <path d="M 490 165 L 435 165 L 215 725 L 315 725 L 465 375 L 490 270 Z" fill="#09090B" />
+      <path d="M 510 165 L 565 165 L 785 725 L 685 725 L 535 375 L 510 270 Z" fill="#09090B" />
+      <path d="M 320 540 L 680 540 L 630 625 L 370 625 Z" fill="#09090B" />
+      <polygon points="500,300 530,370 500,440 470,370" fill="#09090B" />
+      
+  </g>
+  
+  <!-- Centered Wordmark A U R A -->
+  <text x="600" y="870" 
+        text-anchor="middle"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="124" 
+        font-weight="700" 
+        letter-spacing="28" 
+        fill="#09090B">AURA</text>
+
+  <!-- Centered Descriptor -->
+  <text x="600" y="950" 
+        text-anchor="middle"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="34" 
+        font-weight="600" 
+        letter-spacing="16" 
+        fill="#52525B">AMBIENT INTELLIGENCE</text>
+</svg>

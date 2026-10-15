@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AURA Asset High-Res Exporter</title>
+  <style>
+    body {
+      background: #090D16;
+      color: #38BDF8;
+      font-family: monospace;
+      padding: 40px;
+    }
+    #status {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .log-line {
+      margin-bottom: 6px;
+    }
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>AURA High-Resolution 2000px PNG Exporter</h1>
+  <div id="status">Initializing canvas export pipeline...</div>
+  <canvas id="exportCanvas"></canvas>
+
+  <script>
+    const statusDiv = document.getElementById('status');
+    const canvas = document.getElementById('exportCanvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+    function log(msg) {
+      const line = document.createElement('div');
+      line.className = 'log-line';
+      line.textContent = msg;
+      statusDiv.appendChild(line);
+      console.log(msg);
+    }
+
+    const tasks = [
+      { svg: '/assets/vectors/aura_logo_symbol_color.svg', out: 'aura_symbol_color_2000px.png', w: 2000, h: 2000 },
+      { svg: '/assets/vectors/aura_logo_symbol_black.svg', out: 'aura_symbol_black_2000px.png', w: 2000, h: 2000 },
+      { svg: '/assets/vectors/aura_logo_symbol_white.svg', out: 'aura_symbol_white_2000px.png', w: 2000, h: 2000 },
+      { svg: '/assets/vectors/aura_logo_full_color.svg', out: 'aura_horizontal_color_2000px.png', w: 2400, h: 800 },
+      { svg: '/assets/vectors/aura_logo_monochrome_black.svg', out: 'aura_horizontal_black_2000px.png', w: 2400, h: 800 },
+      { svg: '/assets/vectors/aura_logo_reversed_white.svg', out: 'aura_horizontal_white_2000px.png', w: 2400, h: 800 },
+      { svg: '/assets/vectors/aura_logo_vertical_color.svg', out: 'aura_vertical_color_2000px.png', w: 1500, h: 1750 },
+      { svg: '/assets/vectors/aura_logo_app_icon.svg', out: 'aura_app_icon_2000px.png', w: 2048, h: 2048 },
+      { svg: '/assets/vectors/aura_construction_grid.svg', out: 'aura_construction_grid_2000px.png', w: 2400, h: 1800 }
+    ];
+
+    async function exportTask(t) {
+      log(`[LOADING] Fetching ${t.svg}...`);
+      const resp = await fetch(t.svg);
+      const svgText = await resp.text();
+      
+      const blob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = async () => {
+          canvas.width = t.w;
+          canvas.height = t.h;
+          ctx.clearRect(0, 0, t.w, t.h);
+          ctx.drawImage(img, 0, 0, t.w, t.h);
+          URL.revokeObjectURL(url);
+          
+          log(`[RENDERING] Rendered to ${t.w}x${t.h} canvas. Encoding PNG...`);
+          canvas.toBlob(async (pngBlob) => {
+            const formData = new FormData();
+            formData.append('file', pngBlob, t.out);
+            
+            const postResp = await fetch(`/save_png?filename=${encodeURIComponent(t.out)}`, {
+              method: 'POST',
+              body: pngBlob
+            });
+            
+            log(`[SAVED] ✓ ${t.out} successfully sent to server.`);
+            resolve();
+          }, 'image/png');
+        };
+        img.onerror = (e) => {
+          log(`[ERROR] Failed to load SVG image for ${t.svg}`);
+          reject(e);
+        };
+        img.src = url;
+      });
+    }
+
+    async function runAll() {
+      for (const t of tasks) {
+        try {
+          await exportTask(t);
+        } catch (err) {
+          log(`[ERROR] Task failed: ${err}`);
+        }
+      }
+      log('[COMPLETE] All exports finished! Sending shutdown signal...');
+      await fetch('/done', { method: 'POST' });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(runAll, 500);
+    });
+  </script>
+</body>
+</html>

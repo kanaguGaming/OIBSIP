@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 800" width="100%" height="100%">
+  
+  
+  <!-- Symbol Subgroup -->
+  <g transform="translate(140, 150) scale(0.5)" >
+    
+      <path d="M 490 165 L 435 165 L 215 725 L 315 725 L 465 375 L 490 270 Z" fill="#FFFFFF" />
+      <path d="M 510 165 L 565 165 L 785 725 L 685 725 L 535 375 L 510 270 Z" fill="#FFFFFF" />
+      <path d="M 320 540 L 680 540 L 630 625 L 370 625 Z" fill="#FFFFFF" />
+      <polygon points="500,300 530,370 500,440 470,370" fill="#FFFFFF" />
+      
+  </g>
+  <!-- Wordmark Subgroup -->
+  
+    <g id="wordmark" fill="#FFFFFF">
+      <!-- Letter 1: A (Starts at 820) -->
+      <path d="
+        M 940 220 
+        L 970 220 
+        L 1070 470 
+        L 1005 470 
+        L 980 405 
+        L 930 405 
+        L 905 470 
+        L 840 470 
+        Z 
+        M 955 285 
+        L 940 350 
+        L 970 350 
+        Z
+      " />
+
+      <!-- Letter 2: U (Starts at 1160) -->
+      <path d="
+        M 1160 220 
+        L 1225 220 
+        L 1225 385 
+        C 1225 415, 1245 428, 1275 428 
+        C 1305 428, 1325 415, 1325 385 
+        L 1325 220 
+        L 1390 220 
+        L 1390 385 
+        C 1390 445, 1345 480, 1275 480 
+        C 1205 480, 1160 445, 1160 385 
+        Z
+      " />
+
+      <!-- Letter 3: R (Starts at 1480) -->
+      <path d="
+        M 1480 220 
+        L 1610 220 
+        C 1665 220, 1700 245, 1700 295 
+        C 1700 335, 1675 360, 1630 368 
+        L 1715 470 
+        L 1635 470 
+        L 1560 375 
+        L 1545 375 
+        L 1545 470 
+        L 1480 470 
+        Z 
+        M 1545 272 
+        L 1545 325 
+        L 1600 325 
+        C 1625 325, 1635 315, 1635 298 
+        C 1635 282, 1625 272, 1600 272 
+        Z
+      " />
+
+      <!-- Letter 4: A (Starts at 1790) -->
+      <path d="
+        M 1910 220 
+        L 1940 220 
+        L 2040 470 
+        L 1975 470 
+        L 1950 405 
+        L 1900 405 
+        L 1875 470 
+        L 1810 470 
+        Z 
+        M 1925 285 
+        L 1910 350 
+        L 1940 350 
+        Z
+      " />
+    </g>
+
+    <!-- Descriptor / Tagline: AMBIENT INTELLIGENCE -->
+    <text x="825" y="555" 
+          font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+          font-size="44" 
+          font-weight="600" 
+          letter-spacing="14" 
+          fill="#A1A1AA">AMBIENT INTELLIGENCE</text>
+    
+</svg>

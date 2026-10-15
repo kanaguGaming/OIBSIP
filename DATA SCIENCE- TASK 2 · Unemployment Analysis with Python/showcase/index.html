@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA &bull; Brand Identity &amp; Minimalist Logo System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090D16;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --bg-card-hover: rgba(255, 255, 255, 0.06);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.3);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --cyan: #00F2FE;
+      --indigo: #4F46E5;
+      --violet: #8B5CF6;
+      --purple: #D946EF;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="light"] {
+      --bg-dark: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #F1F5F9;
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-accent: rgba(2, 132, 199, 0.3);
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-dim: #94A3B8;
+    }
+
+    [data-theme="checker"] .logo-stage {
+      background-image: linear-gradient(45deg, #1e293b 25%, transparent 25%), 
+                        linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #1e293b 75%), 
+                        linear-gradient(-45deg, transparent 75%, #1e293b 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-color: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.85);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    [data-theme="light"] header {
+      background: rgba(248, 250, 252, 0.9);
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 4px;
+    }
+
+    .brand-mark svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #38BDF8;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-selector {
+      display: flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 4px;
+    }
+
+    .theme-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .theme-btn.active {
+      background: rgba(56, 189, 248, 0.2);
+      color: #38BDF8;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00F2FE 0%, #4F46E5 100%);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 60px 32px 100px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #38BDF8;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #FFFFFF 30%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    [data-theme="light"] .hero-title {
+      background: linear-gradient(135deg, #0F172A 30%, #475569 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    /* Rationale Highlight Banner */
+    .rationale-card {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 32px 40px;
+      margin-bottom: 60px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      text-align: left;
+    }
+
+    .rationale-icon {
+      background: rgba(56, 189, 248, 0.15);
+      border-radius: 12px;
+      padding: 12px;
+      color: #38BDF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rationale-content h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #38BDF8;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .rationale-content p {
+      font-size: 15px;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .section-sub {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* Logo Grid Showcase */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 30px;
+      margin-bottom: 70px;
+    }
+
+    .logo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .logo-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-stage {
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: #090D16;
+      position: relative;
+    }
+
+    .logo-stage.white-stage {
+      background: #FFFFFF;
+    }
+
+    .logo-stage img, .logo-stage svg {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15));
+    }
+
+    .card-meta {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-grow: 1;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .meta-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .meta-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    .meta-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-outline {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #38BDF8;
+      color: #38BDF8;
+    }
+
+    /* Wide Cards */
+    .wide-card {
+      grid-column: 1 / -1;
+    }
+
+    .wide-stage {
+      height: 240px;
+    }
+
+    /* Construction & Blueprint Section */
+    .blueprint-section {
+      background: #090D16;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      margin-bottom: 70px;
+      position: relative;
+    }
+
+    .blueprint-img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Color Swatches Grid */
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 70px;
+    }
+
+    .swatch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .swatch-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-accent);
+    }
+
+    .swatch-color {
+      height: 90px;
+      border-radius: var(--radius-sm);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .swatch-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .swatch-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .swatch-code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Mockup Showcase */
+    .mockup-container {
+      margin-bottom: 70px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .mockup-img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Post Ready Copy Section */
+    .post-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+    }
+
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .post-text {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--text-main);
+      white-space: pre-wrap;
+      line-height: 1.8;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #38BDF8;
+      color: #090D16;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.4);
+      display: none;
+      z-index: 1000;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; }
+      .container { padding: 40px 16px; }
+      .hero-title { font-size: 36px; }
+      .logo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <header>
+    <div class="brand-mark">
+      <svg viewBox="0 0 100 100" fill="none">
+        <polygon points="50,15 42,15 20,72 32,72 47,35 50,24" fill="#00F2FE"/>
+        <polygon points="50,15 58,15 80,72 68,72 53,35 50,24" fill="#8B5CF6"/>
+        <polygon points="29,53 71,53 64,63 36,63" fill="#38BDF8"/>
+      </svg>
+      <span>AURA</span>
+      <span class="badge">IDENTITY v1.0</span>
+    </div>
+
+    <div class="header-actions">
+      <div class="theme-selector">
+        <button class="theme-btn active" onclick="setTheme('dark')">Dark</button>
+        <button class="theme-btn" onclick="setTheme('light')">Light</button>
+        <button class="theme-btn" onclick="setTheme('checker')">Grid</button>
+      </div>
+      <a href="#downloads" class="btn-primary">Download All Assets</a>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-tag">Identity Design System &bull; Oasis Infobytes Task</div>
+      <h1 class="hero-title">AURA &bull; Ambient Intelligence</h1>
+      <p class="hero-desc">
+        A minimalist, mathematically proportioned brand identity designed for a next-generation cognitive tech ecosystem. Engineered with golden ratio curves, isometric precision, and zero non-essential ornamentation.
+      </p>
+    </section>
+
+    <!-- Design Rationale Callout -->
+    <div class="rationale-card">
+      <div class="rationale-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </div>
+      <div class="rationale-content">
+        <h3>DESIGN RATIONALE (LINKEDIN POST READY)</h3>
+        <p>
+          "The AURA identity unites an ascending architectural 'A' with an interlocking continuous Möbius ribbon, symbolizing continuous cognitive flow, spatial elevation, and ambient awareness. The color harmony shifts from Cyber Cyan (#00F2FE) to Electric Indigo (#4F46E5) and Ultraviolet (#9333EA), communicating both mathematical precision and human vitality on an obsidian digital canvas."
+        </p>
+      </div>
+    </div>
+
+    <!-- Core Logo Variants -->
+    <div class="section-header" id="downloads">
+      <div>
+        <h2 class="section-title">Brand Deliverables &bull; Variants</h2>
+        <div class="section-sub">Vector SVGs &amp; 2000&times;2000px High-Res PNGs with Alpha Transparency</div>
+      </div>
+      <div class="badge">Checklist Verified [x]</div>
+    </div>
+
+    <div class="logo-grid">
+      <!-- 1. Full Colour Mark -->
+      <div class="logo-card">
+        <div class="logo-stage">
+          <img src="../assets/vectors/aura_logo_symbol_color.svg" alt="AURA Full Colour Symbol">
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="meta-title-row">
+              <span class="meta-title">Full Colour Symbol</span>
+              <span class="meta-badge">Primary Digital</span>
+            </div>
+            <p class="meta-desc">Luminous multi-stop gradient with dynamic optical depth. Ideal for app launch, digital experiences, and hero branding.</p>
+          </div>
+          <div class="btn-group">
+            <a href="../assets/vectors/aura_logo_symbol_color.svg" download class="btn-outline">Vector SVG</a>
+            <a href="../assets/png_exports_2000px/aura_symbol_color_2000px.png" download class="btn-outline">2000px PNG</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Monochrome Black Mark -->
+      <div class="logo-card">
+        <div class="logo-stage white-stage">
+          <img src="../assets/vectors/aura_logo_symbol_black.svg" alt="AURA Monochrome Black Symbol">
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="meta-title-row">
+              <span class="meta-title">Monochrome Black</span>
+              <span class="meta-badge">Single Ink / Print</span>
+            </div>
+            <p class="meta-desc">Pure #09090B with 16px negative space counterforms. Guaranteed clarity for laser etching, debossing, and monochrome fax/print.</p>
+          </div>
+          <div class="btn-group">
+            <a href="../assets/vectors/aura_logo_symbol_black.svg" download class="btn-outline">Vector SVG</a>
+            <a href="../assets/png_exports_2000px/aura_symbol_black_2000px.png" download class="btn-outline">2000px PNG</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Reversed White Mark -->
+      <div class="logo-card">
+        <div class="logo-stage">
+          <img src="../assets/vectors/aura_logo_symbol_white.svg" alt="AURA Reversed White Symbol">
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="meta-title-row">
+              <span class="meta-title">Reversed White</span>
+              <span class="meta-badge">Dark Mode &amp; Apparel</span>
+            </div>
+            <p class="meta-desc">Pure #FFFFFF on transparent background. Engineered for dark interfaces, titanium hardware engraving, and wearable embroidery.</p>
+          </div>
+          <div class="btn-group">
+            <a href="../assets/vectors/aura_logo_symbol_white.svg" download class="btn-outline">Vector SVG</a>
+            <a href="../assets/png_exports_2000px/aura_symbol_white_2000px.png" download class="btn-outline">2000px PNG</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Horizontal Lockup (Full Colour) -->
+      <div class="logo-card wide-card">
+        <div class="logo-stage wide-stage">
+          <img src="../assets/vectors/aura_logo_full_color.svg" alt="AURA Horizontal Full Colour Lockup">
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="meta-title-row">
+              <span class="meta-title">Horizontal Primary Lockup</span>
+              <span class="meta-badge">Web Navigation &amp; Masthead</span>
+            </div>
+            <p class="meta-desc">Integrated lockup pairing the dimensional mark with custom geometric letterforms and wide-tracked category descriptor.</p>
+          </div>
+          <div class="btn-group">
+            <a href="../assets/vectors/aura_logo_full_color.svg" download class="btn-outline">Vector SVG</a>
+            <a href="../assets/png_exports_2000px/aura_horizontal_color_2000px.png" download class="btn-outline">2400&times;800 PNG</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Horizontal Monochrome Black -->
+      <div class="logo-card">
+        <div class="logo-stage white-stage">
+          <img src="../assets/vectors/aura_logo_monochrome_black.svg" alt="AURA Horizontal Monochrome Lockup">
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="meta-title-row">
+              <span class="meta-title">Horizontal Monochrome</span>
+              <span class="meta-badge">Legal &amp; Invoices</span>
+            </div>
+            <p class="meta-desc">Clean single-ink horizontal lockup for formal documentation, letterheads, and partner co-branding.</p>
+          </div>
+          <div class="btn-group">
+            <a href="../assets/vectors/aura_logo_monochrome_black.svg" download class="btn-outline">Vector SVG</a>
+            <a href="../assets/png_exports_2000px/aura_horizontal_black_2000px.png" download class="btn-outline">PNG Export</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. App Icon Squircle -->
+      <div class="logo-card">
+        <div class="logo-stage">
+          <img src="../assets/vectors/aura_logo_app_icon.svg" alt="AURA App Icon Squircle">
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="meta-title-row">
+              <span class="meta-title">iOS / Android App Icon</span>
+              <span class="meta-badge">2048&times;2048 Retinal</span>
+            </div>
+            <p class="meta-desc">Continuous 22.5% squircle with glassmorphism inner rim reflection and ambient spotlight glow.</p>
+          </div>
+          <div class="btn-group">
+            <a href="../assets/vectors/aura_logo_app_icon.svg" download class="btn-outline">Vector SVG</a>
+            <a href="../assets/png_exports_2000px/aura_app_icon_2000px.png" download class="btn-outline">2048px PNG</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-World Mockup Section -->
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Brand Application &bull; Real-World Mockup</h2>
+        <div class="section-sub">Luxury Matte Black Stationery, iPhone UI, and Embossed Business Cards</div>
+      </div>
+    </div>
+
+    <div class="mockup-container">
+      <img src="../assets/aura_brand_mockup.jpg" alt="AURA Brand In Real Life Mockup" class="mockup-img">
+    </div>
+
+    <!-- Geometric Construction & Clearspace -->
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Geometric Construction &bull; Clearspace Grid</h2>
+        <div class="section-sub">Fibonacci Golden Ratio (&phi; = 1.618) &bull; 60&deg; Isometric Coordinate System</div>
+      </div>
+      <a href="../assets/vectors/aura_construction_grid.svg" download class="btn-outline">Download Grid SVG</a>
+    </div>
+
+    <div class="blueprint-section">
+      <img src="../assets/vectors/aura_construction_grid.svg" alt="AURA Construction Grid Blueprint" class="blueprint-img">
+    </div>
+
+
+    <!-- Color Palette Architecture -->
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Harmonious Color Architecture</h2>
+        <div class="section-sub">Click any swatch to copy HEX code to clipboard</div>
+      </div>
+    </div>
+
+    <div class="swatches-grid">
+      <div class="swatch-card" onclick="copyColor('#00F2FE')">
+        <div class="swatch-color" style="background: #00F2FE;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Cyber Cyan</span>
+          <span class="swatch-code"><span>#00F2FE</span><span>RGB(0, 242, 254)</span></span>
+        </div>
+      </div>
+
+      <div class="swatch-card" onclick="copyColor('#38BDF8')">
+        <div class="swatch-color" style="background: #38BDF8;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Radiant Sky</span>
+          <span class="swatch-code"><span>#38BDF8</span><span>RGB(56, 189, 248)</span></span>
+        </div>
+      </div>
+
+      <div class="swatch-card" onclick="copyColor('#4F46E5')">
+        <div class="swatch-color" style="background: #4F46E5;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Electric Indigo</span>
+          <span class="swatch-code"><span>#4F46E5</span><span>RGB(79, 70, 229)</span></span>
+        </div>
+      </div>
+
+      <div class="swatch-card" onclick="copyColor('#9333EA')">
+        <div class="swatch-color" style="background: #9333EA;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Ultraviolet</span>
+          <span class="swatch-code"><span>#9333EA</span><span>RGB(147, 51, 234)</span></span>
+        </div>
+      </div>
+
+      <div class="swatch-card" onclick="copyColor('#090D16')">
+        <div class="swatch-color" style="background: #090D16; border: 1px solid #334155;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Obsidian Canvas</span>
+          <span class="swatch-code"><span>#090D16</span><span>RGB(9, 13, 22)</span></span>
+        </div>
+      </div>
+
+      <div class="swatch-card" onclick="copyColor('#F8FAFC')">
+        <div class="swatch-color" style="background: #F8FAFC;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Pure Crisp Slate</span>
+          <span class="swatch-code"><span>#F8FAFC</span><span>RGB(248, 250, 252)</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LinkedIn Post Ready Copy -->
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Ready-to-Publish LinkedIn Post</h2>
+        <div class="section-sub">Formatted with design rationale, internship tag, and hashtags</div>
+      </div>
+      <button class="btn-primary" onclick="copyPost()">Copy Post to Clipboard</button>
+    </div>
+
+    <div class="post-box">
+      <div class="post-text" id="postText">&#x1F680; Excited to unveil my latest Brand Identity Project: AURA &bull; Ambient Intelligence!
+
+As part of my Graphic Design / Data Science Internship task with Oasis Infobytes, I set out to create a minimalist, iconic logo that embodies the KISS principle (Keep It Simple) while conveying the power of next-generation ambient computing.
+
+&#x1F4D0; Design Rationale:
+The AURA mark unites an ascending architectural 'A' with an interlocking continuous M&ouml;bius ribbon, symbolizing seamless cognitive flow, spatial elevation, and ambient awareness. The harmonious color gradient transitions from Cyber Cyan (#00F2FE) to Electric Indigo (#4F46E5) and Ultraviolet (#9333EA)&mdash;balancing high-tech mathematical precision with human vitality across an obsidian canvas.
+
+&#x2728; Project Highlights:
+&bull; 100% Original Geometric Concept constructed with Golden Ratio (&phi; = 1.618) and 60&deg; isometric axes
+&bull; 3 Core Variants: Full Colour, Monochrome Black (single-ink print ready), and Reversed White
+&bull; Scalable Vector Suite (SVG) + 2000&times;2000px high-resolution transparent PNG exports
+&bull; Custom geometric typography with intentional optical tracking
+&bull; Real-world application mockups (luxury stationery, dark mode UI, and stationery)
+
+Huge thanks to Oasis Infobytes for this creative brief! I'd love to hear your thoughts and feedback in the comments below! &#x1F447;
+
+#GraphicDesign #LogoDesign #BrandIdentity #Minimalism #UIUX #DesignSystem #OasisInfobytes #CreativeDesign #AdobeIllustrator #Figma #VisualIdentity</div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <script>
+    function setTheme(theme) {
+      document.body.setAttribute('data-theme', theme);
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === theme);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2500);
+    }
+
+    function copyColor(hex) {
+      navigator.clipboard.writeText(hex);
+      showToast(`Copied ${hex} to clipboard!`);
+    }
+
+    function copyPost() {
+      const text = document.getElementById('postText').innerText;
+      navigator.clipboard.writeText(text);
+      showToast('LinkedIn Post copied to clipboard!');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="100%" height="100%">
+  <defs>
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" />
+    </pattern>
+    <linearGradient id="gridGradLeft" x1="0%" y1="100%" x2="60%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <linearGradient id="gridGradRight" x1="40%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#9333EA" />
+    </linearGradient>
+    <linearGradient id="gridGradBridge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#D946EF" />
+    </linearGradient>
+  </defs>
+
+  <!-- Obsidian Blueprint Background -->
+  <rect width="1600" height="1200" fill="#090D16" />
+  <rect width="1600" height="1200" fill="url(#gridPattern)" />
+
+  <!-- Technical Header -->
+  <text x="80" y="90" font-family="monospace" font-size="28" font-weight="700" fill="#38BDF8" letter-spacing="4">AURA &#x2022; GEOMETRIC CONSTRUCTION &amp; CLEARSPACE SYSTEM</text>
+  <text x="80" y="125" font-family="monospace" font-size="14" fill="#64748B" letter-spacing="2">SPECIFICATION: GOLDEN RATIO (&#x3C6; = 1.618) &#x2022; ISOMETRIC AXIS: 60&#xB0; &#x2022; CLEARSPACE UNIT: X = 0.5H</text>
+
+  <!-- Clearspace Boundary Box (X Margin = 90px around 600px mark) -->
+  <!-- Mark centered at x=800, y=620, scale=0.7 (dimensions 700x700 centered) -->
+  <g transform="translate(450, 220) scale(0.7)">
+    <!-- Clearspace Box -->
+    <rect x="80" y="40" width="840" height="780" fill="none" stroke="#F43F5E" stroke-width="2" stroke-dasharray="8 8" opacity="0.6" />
+    <text x="100" y="70" font-family="monospace" font-size="22" fill="#F43F5E">CLEARSPACE = 1X</text>
+    <text x="840" y="70" font-family="monospace" font-size="22" fill="#F43F5E">1X</text>
+
+    <!-- Construction Circles (Golden Ratio & Tangents) -->
+    <circle cx="500" cy="500" r="380" fill="none" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.4" />
+    <circle cx="500" cy="500" r="235" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.5" />
+    <circle cx="500" cy="500" r="145" fill="none" stroke="#818CF8" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.6" />
+
+    <!-- 60-degree Axis Construction Guidelines -->
+    <line x1="500" y1="0" x2="500" y2="900" stroke="#00F2FE" stroke-width="1" stroke-dasharray="6 6" opacity="0.3" />
+    <line x1="0" y1="535" x2="1000" y2="535" stroke="#00F2FE" stroke-width="1" stroke-dasharray="6 6" opacity="0.3" />
+    <line x1="0" y1="635" x2="1000" y2="635" stroke="#00F2FE" stroke-width="1" stroke-dasharray="6 6" opacity="0.3" />
+    
+    <!-- Tangent slope lines -->
+    <line x1="120" y1="840" x2="550" y2="70" stroke="#38BDF8" stroke-width="1" stroke-dasharray="3 3" opacity="0.4" />
+    <line x1="880" y1="840" x2="450" y2="70" stroke="#38BDF8" stroke-width="1" stroke-dasharray="3 3" opacity="0.4" />
+
+    <!-- The Actual Geometry with Semi-Transparency -->
+    <path d="M 500 155 L 435 155 L 205 725 L 325 725 L 475 355 L 500 240 Z" fill="url(#gridGradLeft)" opacity="0.9" />
+    <path d="M 500 155 L 565 155 L 795 725 L 675 725 L 525 355 L 500 240 Z" fill="url(#gridGradRight)" opacity="0.9" />
+    <path d="M 290 535 L 710 535 L 645 635 L 355 635 Z" fill="url(#gridGradBridge)" opacity="0.95" />
+    <polygon points="500,240 540,340 500,440 460,340" fill="#FFFFFF" opacity="0.9" />
+
+    <!-- Vertex Anchor Points (Red Technical Crosshairs) -->
+    <g fill="#F43F5E">
+      <circle cx="500" cy="155" r="7" /><text x="515" y="150" font-family="monospace" font-size="18">P1 (500, 155)</text>
+      <circle cx="205" cy="725" r="7" /><text x="100" y="750" font-family="monospace" font-size="18">P2 (205, 725)</text>
+      <circle cx="795" cy="725" r="7" /><text x="815" y="750" font-family="monospace" font-size="18">P3 (795, 725)</text>
+      <circle cx="500" cy="240" r="7" /><text x="515" y="245" font-family="monospace" font-size="18">Core &#x3C6;</text>
+    </g>
+  </g>
+
+  <!-- Technical Footer Specification Callouts -->
+  <g transform="translate(80, 1020)">
+    <!-- Swatch 1 -->
+    <rect x="0" y="0" width="48" height="48" rx="8" fill="#00F2FE" />
+    <text x="60" y="22" font-family="monospace" font-size="14" font-weight="700" fill="#F8FAFC">CYBER CYAN</text>
+    <text x="60" y="40" font-family="monospace" font-size="12" fill="#64748B">#00F2FE &#x2022; RGB(0, 242, 254)</text>
+
+    <!-- Swatch 2 -->
+    <rect x="280" y="0" width="48" height="48" rx="8" fill="#4F46E5" />
+    <text x="340" y="22" font-family="monospace" font-size="14" font-weight="700" fill="#F8FAFC">ELECTRIC INDIGO</text>
+    <text x="340" y="40" font-family="monospace" font-size="12" fill="#64748B">#4F46E5 &#x2022; RGB(79, 70, 229)</text>
+
+    <!-- Swatch 3 -->
+    <rect x="580" y="0" width="48" height="48" rx="8" fill="#9333EA" />
+    <text x="640" y="22" font-family="monospace" font-size="14" font-weight="700" fill="#F8FAFC">ULTRAVIOLET</text>
+    <text x="640" y="40" font-family="monospace" font-size="12" fill="#64748B">#9333EA &#x2022; RGB(147, 51, 234)</text>
+
+    <!-- Swatch 4 -->
+    <rect x="880" y="0" width="48" height="48" rx="8" fill="#090D16" stroke="#334155" stroke-width="2" />
+    <text x="940" y="22" font-family="monospace" font-size="14" font-weight="700" fill="#F8FAFC">OBSIDIAN CANVAS</text>
+    <text x="940" y="40" font-family="monospace" font-size="12" fill="#64748B">#090D16 &#x2022; RGB(9, 13, 22)</text>
+  </g>
+</svg>
